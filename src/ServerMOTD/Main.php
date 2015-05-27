@@ -16,7 +16,7 @@ class Main extends PluginBase implements Listener{
   public function onEnable(){
     $this->getLogger()->info(TextFormat::BLUE . "ServerMOTD enabled");
     $this->saveDefaultConfig(); // Lets try that
-    public static $motd = array("Welcome to the server!");
+  public static $motd = array("Welcome to the server!");
   }
   public function onDisable(){
     $this->getLogger()->info(TextFormat::RED . "ServerMOTD disabled");
@@ -30,7 +30,7 @@ class Main extends PluginBase implements Listener{
         }else{
            if(strtolower($args[0]) == "read"){
              if($sender->hasPermission("motd.command.read")){
-                $sender->sendMessage("Today's motd: " .$motd);
+                $sender->sendMessage("Today's motd: " .$this->get($motd);
              }else{
                $sender->sendMessage("You don't have permission to do that!");
              }
@@ -40,7 +40,7 @@ class Main extends PluginBase implements Listener{
                 $sender->sendMessage("Usage: motd set <message>");
               }else{
                 $newmotd = implode($args[1]);
-                $motd[0] = $newmotd;
+                $this->get($motd[0]) = $newmotd;
                 $broadcast = $this->getConfig()->get("Broadcast");
                 if($broadcast == "true"){
                   $message = $this->getConfig()->get("BroadcastMessage");
@@ -65,16 +65,16 @@ class Main extends PluginBase implements Listener{
     if($joinmotd == "true"){
       $player = $event->getPlayer()->getDisplayName();
       if($player->hasPermission("motd.command.read")){
-        $player->sendMessage("Today's MOTD: " .$motd);
+        $player->sendMessage("Today's MOTD: " .$this->get($motd));
       }
     }
-    public function onPlayerRespawnEvent(PlayerRespawnEvent $event){
-      $respawnmotd = $this->getConfig()->get("RespawnMOTD");
-      if($respawnmotd == "true"){
-        $player = $event->getPlayer()->getDisplayName();
-        if($player->hasPermission("motd.command.read")){
-          $player->sendMessage("Today's MOTD: " .$motd)
-        }
+  }
+  public function onPlayerRespawnEvent(PlayerRespawnEvent $event){
+    $respawnmotd = $this->getConfig()->get("RespawnMOTD");
+    if($respawnmotd == "true"){
+      $player = $event->getPlayer()->getDisplayName();
+      if($player->hasPermission("motd.command.read")){
+        $player->sendMessage("Today's MOTD: " .This->get($motd));
       }
     }
   }
