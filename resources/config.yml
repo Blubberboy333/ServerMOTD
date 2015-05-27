@@ -1,0 +1,13 @@
+## Default config for ServerMOTD
+
+# Will the server broadcast a message when the MOTD is changed?
+Broadcast: true
+
+# What will be broadcasted when the MOTD is changed (if Broadcast = true)
+BroadcastMessage: The MOTD has been changed! Use /motd read to view it!
+
+# Will a player see the MOTD when they respawn?
+RespawnMOTD: true
+
+# Will a player see the MOTD when they join the game?
+JoinMOTD: true
