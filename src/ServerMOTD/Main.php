@@ -9,6 +9,8 @@ use pocketmine\event\PlayerJoinEvent;
 use pocketmine\event\PlayerRespawnEvent;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
+use pocketmine\Server;
+use pocketmine\Player;
 
 class Main extends PluginBase implements Listener{
   public function onEnable(){
@@ -59,7 +61,21 @@ class Main extends PluginBase implements Listener{
     }
   }
   public function onJoin(PlayerJoinEvent $event){
-    
-    $player = $event->getPlayer()->getDisplayName();
+    $joinmotd = $this->getConfig()->get("JoinMOTD");
+    if($joinmotd == "true"){
+      $player = $event->getPlayer()->getDisplayName();
+      if($player->hasPermission("motd.command.read")){
+        $player->sendMessage("Today's MOTD: " .$motd);
+      }
+    }
+    public function onPlayerRespawnEvent(PlayerRespawnEvent $event){
+      $respawnmotd = $this->getConfig()->get("RespawnMOTD");
+      if($respawnmotd == "true"){
+        $player = $event->getPlayer()->getDisplayName();
+        if($player->hasPermission("motd.command.read")){
+          $player->sendMessage("Today's MOTD: " .$motd)
+        }
+      }
+    }
   }
 }
