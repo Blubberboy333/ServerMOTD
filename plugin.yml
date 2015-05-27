@@ -1,0 +1,24 @@
+name: ServerMOTD
+version: 1.0.0
+api: [1.10.0]
+main: ServerMOTD\Main
+commands:
+  motd:
+    usage: /motd <read | set> [message]
+    description: Main MOTD command. Read tells the player the MOTD. Set sets the MOTD
+    permission: motd.command.set
+permissions:
+  motd:
+    default: false
+    description: Allows the player to use all of the MOTD functions
+    children:
+      motd.command:
+        default: false
+        description: Allows the player to use all of the MOTD commands
+        children:
+          motd.command.read:
+            default: true
+            description: Allows the player to run the read command
+          motd.command.set:
+            default: op
+            description: Allows the player to run the set command
