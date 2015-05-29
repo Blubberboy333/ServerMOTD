@@ -1,24 +1,29 @@
 name: ServerMOTD
 version: 1.0.0
-api: [1.10.0]
+api: 1.10.0
+author: Blubberboy333
+description: Allows the players to read a message of the day, which is set by the owner, or an admin
 main: ServerMOTD\Main
 commands:
   motd:
-    usage: /motd <read | set> [message]
-    description: Main MOTD command. Read tells the player the MOTD. Set sets the MOTD
-    permission: motd.command.set
+    usage: /motd <read | message>
+    description: Main ServerMOTD command
+    permission: motd.command.motd
 permissions:
   motd:
     default: false
-    description: Allows the player to use all of the MOTD functions
+    description: Allows the player to use all of the ServerMOTD functions
     children:
       motd.command:
         default: false
-        description: Allows the player to use all of the MOTD commands
+        description: Allows the player to use all of the ServerMOTD commands
         children:
+          motd.command.motd:
+            default: op
+            description: Allows the player to run the motd command
           motd.command.read:
             default: true
-            description: Allows the player to run the read command
+            description: Allows the player to read the MOTD
           motd.command.set:
             default: op
-            description: Allows the player to run the set command
+            description: Allows the player to read the MOTD
