@@ -1,7 +1,8 @@
-## Default config for ServerMOTD
+# Default config file for ServerMOTD
 
-# Will the server broadcast a message when the MOTD is changed?
+
+# Broadcast message when the MOTD is changed?
 Broadcast: true
 
-# What will be broadcasted when the MOTD is changed (if Broadcast = true)
-BroadcastMessage: The MOTD has been changed! Use /motd read to view it!
+# If Broadcast = true, what will the server broadcast when the MOTD is changed?
+BroadcastMessage: The Message of the day has been changed! Use /motd read to view it!
